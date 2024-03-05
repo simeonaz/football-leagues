@@ -17,11 +17,11 @@ export class ClubsService {
   }
 
   async findAll(): Promise<Club[]> {
-    return await this.ClubModel.find().exec();
+    return await this.ClubModel.find().populate(['league']).exec();
   }
 
   async findOne(id: string): Promise<Club> {
-    return await this.ClubModel.findById(id).exec();
+    return await this.ClubModel.findById(id).populate(['league']).exec();
   }
 
   async update(id: string, updateClubDto: UpdateClubDto): Promise<Club> {

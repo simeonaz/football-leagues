@@ -3,7 +3,10 @@ import { Ground } from 'src/subdocs/ground.subdocs';
 import { SchemaTypes } from 'mongoose';
 import { League } from 'src/leagues/league.schema';
 
-@Schema()
+@Schema({
+  toJSON: { virtuals: true },
+  toObject: { virtuals: true },
+})
 export class Club {
   @Prop({ required: true })
   name: string;

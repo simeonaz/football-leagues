@@ -2,7 +2,10 @@ import { Schema, Prop, SchemaFactory } from '@nestjs/mongoose';
 import { SchemaTypes } from 'mongoose';
 import { Club } from 'src/clubs/club.schema';
 
-@Schema()
+@Schema({
+  toJSON: { virtuals: true },
+  toObject: { virtuals: true },
+})
 export class Player {
   @Prop({ required: true })
   name: string;

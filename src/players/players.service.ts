@@ -18,11 +18,15 @@ export class PlayersService {
   }
 
   async findAll(): Promise<Player[]> {
-    return await this.PlayerModel.find().exec();
+    return await this.PlayerModel.find()
+      .populate(['currentTeam', 'teamPlayedFor'])
+      .exec();
   }
 
   async findOne(id: string): Promise<Player> {
-    return await this.PlayerModel.findById(id).exec();
+    return await this.PlayerModel.findById(id)
+      .populate(['currentTeam', 'teamPlayedFor'])
+      .exec();
   }
 
   async update(id: string, updatePlayerDto: UpdatePlayerDto): Promise<Player> {
